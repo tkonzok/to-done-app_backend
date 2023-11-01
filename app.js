@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import indexRouter from "./routes/index.js";
 import taskRouter from "./routes/taskRouter.js";
+import apiRouter from "./routes/apiRouter.js";
 import compression from "compression";
 import helmet from "helmet";
 import RateLimit from "express-rate-limit";
@@ -55,5 +56,6 @@ app.use(
 
 app.use('/', indexRouter);
 app.use('/tasks', taskRouter);
+app.use('/api', apiRouter);
 
 app.listen(8080, () => console.log("app listening on port 8080!"));
