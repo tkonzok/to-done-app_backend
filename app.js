@@ -10,6 +10,7 @@ import RateLimit from "express-rate-limit";
 
 import 'dotenv/config';
 import express from "express";
+import cors from "cors";
 import path from "path";
 import { fileURLToPath } from 'url';
 import mongoose from "mongoose";
@@ -38,6 +39,7 @@ app.set('port', 8080);
 app.set("views", path.join(__dirname, 'views'));
 app.set("view engine", "pug");
 
+app.use(cors());
 app.use(limiter);
 app.use(logger('dev'));
 app.use(express.json());
