@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  form(method='POST' action='')
+    h1.h3.mb-3.fw-normal #{title}
+    .form-floating
+      label(for='title') Title
+      input#title.form-control(type='text', name='title' required='true' value=(undefined===task ? '' : task.title))
+    .form-floating
+      label(for='area') Area
+      input#text.form-control(type='text', name='area' required='true' value=(undefined===task ? '' : task.area))
+    .form-floating
+      label(for='area') Interval in days:
+      input#text.form-control(type='number', name='interval' required='true' value=(undefined===task ? '' : task.interval))
+    button.btn.btn-primary.w-100.py-2(type='submit') Add Task
+    button.btn.btn-secondary.w-100.py-2(type='button') 
+      a(href="../") Return
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
+
+  

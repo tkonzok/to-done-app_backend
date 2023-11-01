@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+
+  .row.mb-2
+    each task in task_list
+      .col-md-6.m-1
+        .row.g-0.border.rounded.overflow-hidden.flex-md-row.h-100.mb-4.shadow-sm.h-md-250.position-relative
+          .col.p-4.d-flex.flex-column.position-static
+            strong.d-inline-block.mb-2.text-primary-emphasis Task
+            h3.mb-0 #{task.title}
+            .mb-1.text-body-secondaryArea: #{task.area} 
+            .mb-1.text-body-secondary Last Done: #{task.lastDone} 
+            .mb-1.text-body-secondary Interval: #{task.interval}
+            a.icon-link.gap-1.icon-link-hover.stretched-link.mt-4(href=task.url+'/delete-task')(style='color: #0d6efd')
+              | Delete Task
+    else
+      .col-md-6
+        .row.g-0.border.rounded.overflow-hidden.flex-md-row.mb-4.shadow-sm.h-md-250.position-relative
+          .col.p-4.d-flex.flex-column.position-static
+            p.card-text.mb-auto
+              | There are no tasks.
+    
+  button.btn.btn-primary.py-2.m-1(style='width: 150px')
+    a(href='tasks/add-task')
+      | Add Task
+  button.btn.btn-secondary.py-2.m-1(style='width: 150px')
+    a(href="/") Return

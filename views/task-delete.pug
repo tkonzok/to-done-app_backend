@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 Delete: #{task.title}
+
+  p Do you really want to delete this Task?
+
+  form(method='POST' action='')
+    div.form-group
+      input#taskid.form-control(type='hidden',name='taskid', required='true', value=task._id )
+
+    button.btn.btn-primary.py-2.m-1(type='submit') Delete
+    button.btn.btn-secondary.py-2.m-1(style='width: 150px')
+      a(href="/tasks") Return
